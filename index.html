@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrintYuk Tanjungpinang - Jasa Print Online Cepat & Praktis</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+            },
+            accent: {
+              500: '#14b8a6',
+              600: '#0d9488',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen relative">
+
+  <!-- Header / Navbar -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="p-2 bg-brand-500 text-white rounded-lg shadow-md">
+          <i data-lucide="printer" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xl font-bold text-slate-900 tracking-tight">PrintYuk!</span>
+          <span class="block text-xs text-brand-600 font-medium -mt-1">Tanjungpinang</span>
+        </div>
+      </div>
+      
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+        <a href="#profil" class="hover:text-brand-600 transition-colors">Tentang Kami</a>
+        <a href="#cara-order" class="hover:text-brand-600 transition-colors">Cara Order</a>
+        <a href="#daftar-harga" class="hover:text-brand-600 transition-colors">Daftar Harga</a>
+        <a href="#konsultasi" class="hover:text-brand-600 transition-colors text-emerald-600 font-semibold flex items-center gap-1">
+          <i data-lucide="message-square" class="w-4 h-4"></i> Konsultasi
+        </a>
+        <a href="#order-form" class="hover:text-brand-600 transition-colors">Hitung Biaya</a>
+        <a href="#keunggulan" class="hover:text-brand-600 transition-colors">Keunggulan</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button type="button" id="btn-wa-consult-nav" class="hidden sm:flex bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 px-3 py-2 rounded-lg font-medium text-sm transition-all items-center gap-1.5">
+          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i>
+          <span>Tanya Admin</span>
+        </button>
+        <a href="#order-form" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-1.5 shadow-sm">
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>Cetak Sekarang</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-brand-50 to-slate-50 py-12 md:py-16 border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 text-center space-y-4">
+      <span class="inline-flex items-center gap-1.5 py-1 px-3 rounded-full text-xs font-semibold bg-brand-100 text-brand-700">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Jasa Print Online #1 di Tanjungpinang
+      </span>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+        Ngeprint Tugas & Berkas Tanpa <span class="text-brand-600">Perlu Antre!</span>
+      </h1>
+      <p class="max-w-2xl mx-auto text-slate-600 text-sm md:text-base">
+        Khusus Mahasiswa (UMRAH, STIE, Poltekkes) & Pekerja Kantoran Tanjungpinang. Upload file, cek estimasi harga, lalu duduk manis—berkas siap diantar atau dijemput!
+      </p>
+      <div class="pt-2 flex flex-wrap justify-center gap-3">
+        <a href="#order-form" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+          <i data-lucide="calculator" class="w-5 h-5"></i>
+          <span>Kalkulator & Order Online</span>
+        </a>
+        <a href="#konsultasi" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-semibold text-sm shadow-md transition-all flex items-center gap-2">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          <span>Konsultasi Dulu</span>
+        </a>
+        <a href="#profil" class="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 px-5 py-3 rounded-xl font-semibold text-sm transition-all">
+          Company Profile
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Profile Section -->
+  <section id="profil" class="py-12 bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="bg-gradient-to-r from-slate-900 to-brand-700 rounded-3xl p-8 text-white shadow-xl">
+        <div class="max-w-3xl space-y-4">
+          <span class="bg-brand-500/30 text-brand-200 text-xs uppercase tracking-widest font-semibold px-3 py-1 rounded-full border border-brand-400/20">Profil Usaha</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold">PrintYuk! Tanjungpinang</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            PrintYuk! Tanjungpinang adalah penyedia perkhidmatan percetakan dokumen secara dalam talian (online) yang pantas, mesra pelajar, dan berpatutan. Kami hadir bagi memudahkan mahasiswa dan pekerja di Tanjungpinang mencetak tugasan, skripsi, serta dokumen pejabat tanpa perlu beratur di kedai fotokopi.
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-slate-700 text-xs">
+            <div>
+              <p class="text-slate-400">Slogan</p>
+              <p class="font-bold text-white mt-0.5">Ngeprint Cepat, Tanpa Antre, Siap Hantar!</p>
+            </div>
+            <div>
+              <p class="text-slate-400">Jam Operasi</p>
+              <p class="font-bold text-white mt-0.5">Isnin – Sabtu (08:00 – 21:00 WIB)</p>
+            </div>
+            <div>
+              <p class="text-slate-400">Layanan</p>
+              <p class="font-bold text-white mt-0.5">Print, Jilid, COD Kampus</p>
+            </div>
+            <div>
+              <p class="text-slate-400">Lokasi</p>
+              <p class="font-bold text-white mt-0.5">Tanjungpinang, Kep. Riau</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cara Order Section -->
+  <section id="cara-order" class="py-12 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h2 class="text-2xl font-bold text-slate-900">4 Langkah Mudah Cetak Dokumen</h2>
+        <p class="text-slate-500 text-sm mt-1">Gak perlu repot bawa flashdisk ke tempat fotokopi</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 text-center space-y-3 shadow-sm">
+          <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center font-bold mx-auto text-lg">1</div>
+          <h3 class="font-bold text-slate-800 text-base">Upload Dokumen</h3>
+          <p class="text-xs text-slate-500">Pilih berkas PDF, Word, atau Gambar yang mau dicetak dari HP/Laptop.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 text-center space-y-3 shadow-sm">
+          <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center font-bold mx-auto text-lg">2</div>
+          <h3 class="font-bold text-slate-800 text-base">Pilih Spesifikasi</h3>
+          <p class="text-xs text-slate-500">Atur jenis kertas, pilihan warna (B/W atau Full Color), dan jilid.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 text-center space-y-3 shadow-sm">
+          <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center font-bold mx-auto text-lg">3</div>
+          <h3 class="font-bold text-slate-800 text-base">Cek Estimasi Harga</h3>
+          <p class="text-xs text-slate-500">Sistem menghitung total biaya secara otomatis & transparan.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 text-center space-y-3 shadow-sm">
+          <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold mx-auto text-lg">4</div>
+          <h3 class="font-bold text-slate-800 text-base">Kirim WA & Antar</h3>
+          <p class="text-xs text-slate-500">Klik tombol WA, kirim detail ke admin, lalu pilih COD/Ambil di toko!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daftar Harga Transparan -->
+  <section id="daftar-harga" class="py-12 bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-xl mx-auto mb-8">
+        <h2 class="text-2xl font-bold text-slate-900">Daftar Harga Transparan</h2>
+        <p class="text-slate-500 text-sm mt-1">Harga jujur, hemat untuk kantong mahasiswa & kantor</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-2 text-brand-600 font-bold">
+            <i data-lucide="file-text" class="w-5 h-5"></i>
+            <h3>Kertas HVS A4 / F4</h3>
+          </div>
+          <ul class="text-xs space-y-2 text-slate-600 pt-2 border-t border-slate-200">
+            <li class="flex justify-between"><span>Hitam Putih (B/W):</span> <span class="font-semibold text-slate-800">Rp 500 /lembar</span></li>
+            <li class="flex justify-between"><span>Warna Teks / Sedikit:</span> <span class="font-semibold text-slate-800">Rp 1.000 /lembar</span></li>
+            <li class="flex justify-between"><span>Warna Full / Gambar:</span> <span class="font-semibold text-slate-800">Rp 2.000 /lembar</span></li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-2 text-brand-600 font-bold">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+            <h3>Jilid Dokumen</h3>
+          </div>
+          <ul class="text-xs space-y-2 text-slate-600 pt-2 border-t border-slate-200">
+            <li class="flex justify-between"><span>Jilid Lakban + Mika:</span> <span class="font-semibold text-slate-800">Rp 5.000</span></li>
+            <li class="flex justify-between"><span>Jilid Spiral Plastik:</span> <span class="font-semibold text-slate-800">Rp 10.000</span></li>
+            <li class="flex justify-between"><span>Jilid Hardcover / Skripsi:</span> <span class="font-semibold text-slate-800">Rp 25.000</span></li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center gap-2 text-brand-600 font-bold">
+            <i data-lucide="truck" class="w-5 h-5"></i>
+            <h3>Pengiriman Tanjungpinang</h3>
+          </div>
+          <ul class="text-xs space-y-2 text-slate-600 pt-2 border-t border-slate-200">
+            <li class="flex justify-between"><span>Ambil Sendiri di Toko:</span> <span class="font-semibold text-emerald-600">GRATIS</span></li>
+            <li class="flex justify-between"><span>COD UMRAH / STIE / Poltek:</span> <span class="font-semibold text-slate-800">Rp 3.000</span></li>
+            <li class="flex justify-between"><span>Kurir Instant Km 1 - 15:</span> <span class="font-semibold text-slate-800">Rp 5.000 - Rp 8.000</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FITUR BARU: SEKSI KONSULTASI & TANYA JAWAB VIA WA -->
+  <section id="konsultasi" class="py-12 bg-emerald-50/60 border-b border-emerald-100">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="bg-white rounded-3xl p-6 md:p-8 border border-emerald-200 shadow-md">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          
+          <div class="md:col-span-7 space-y-3">
+            <span class="inline-flex items-center gap-1.5 py-1 px-3 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+              <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Masih Ragu / Bingung?
+            </span>
+            <h2 class="text-2xl font-bold text-slate-900">Layanan Konsultasi & Tanya-Tanya Gratis</h2>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Bingung dengan format skripsi, jenis jilid yang sesuai, atau butuh penawaran khusus untuk cetak jumlah banyak? Tanya admin kami terlebih dahulu via WhatsApp sebelum memesan!
+            </p>
+            <div class="flex flex-wrap gap-2 pt-1 text-xs text-slate-600 font-medium">
+              <span class="bg-slate-100 px-3 py-1 rounded-md">✔ Tanya Format Skripsi</span>
+              <span class="bg-slate-100 px-3 py-1 rounded-md">✔ Cek Ketersediaan Kertas</span>
+              <span class="bg-slate-100 px-3 py-1 rounded-md">✔ Negosiasi Cetak Jumlah Besar</span>
+            </div>
+          </div>
+
+          <div class="md:col-span-5 bg-emerald-50 p-5 rounded-2xl border border-emerald-200 space-y-3 text-center">
+            <p class="text-xs font-bold text-emerald-800 uppercase tracking-wide">Pilih Topik Konsultasi</p>
+            <div class="grid grid-cols-1 gap-2 text-xs">
+              <button type="button" onclick="sendConsultation('Tanya Soal Format File & Jenis Kertas')" class="w-full bg-white hover:bg-emerald-600 hover:text-white text-slate-700 py-2.5 px-3 rounded-xl border border-slate-200 transition-all font-medium text-left flex items-center justify-between">
+                <span>📄 Tanya Format File / Kertas</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+              <button type="button" onclick="sendConsultation('Tanya Mengenai Cetak & Jilid Skripsi')" class="w-full bg-white hover:bg-emerald-600 hover:text-white text-slate-700 py-2.5 px-3 rounded-xl border border-slate-200 transition-all font-medium text-left flex items-center justify-between">
+                <span>🎓 Tanya Cetak & Jilid Skripsi</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+              <button type="button" onclick="sendConsultation('Tanya Diskon Cetak Jumlah Banyak')" class="w-full bg-white hover:bg-emerald-600 hover:text-white text-slate-700 py-2.5 px-3 rounded-xl border border-slate-200 transition-all font-medium text-left flex items-center justify-between">
+                <span>🏷️ Tanya Cetak Banyak / Diskon</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Form & Kalkulator -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-12 gap-8" id="order-form">
+    
+    <!-- Form & Kalkulator (Kiri) -->
+    <div class="lg:col-span-7 space-y-6">
+      
+      <!-- Welcome Banner -->
+      <div class="bg-gradient-to-r from-brand-600 to-accent-600 rounded-2xl p-6 text-white shadow-lg">
+        <h2 class="text-xl font-bold mb-1">Formulir & Kalkulator Cetak 🚀</h2>
+        <p class="text-brand-100 text-xs md:text-sm">Silakan isi spesifikasi berkas yang mau kamu print di bawah ini.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-6">
+        
+        <!-- Step 1: Upload File (DIPERBAIKI) -->
+        <div>
+          <label class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center text-xs">1</span>
+            Upload File / Dokumen
+          </label>
+          <div class="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:border-brand-500 transition-colors bg-slate-50 relative" id="drop-zone">
+            
+            <!-- Placeholder Unggah File -->
+            <div class="flex flex-col items-center gap-2 cursor-pointer relative" id="upload-placeholder">
+              <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.png">
+              <i data-lucide="upload-cloud" class="w-10 h-10 text-brand-500"></i>
+              <p class="font-semibold text-slate-700 text-sm">Klik atau drag & drop file ke sini</p>
+              <p class="text-xs text-slate-400">PDF, Word, PowerPoint, atau Gambar (Max 50MB)</p>
+            </div>
+
+            <!-- Informasi File & Tombol Cancel -->
+            <div id="file-info" class="hidden flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200 text-left relative z-20">
+              <div class="flex items-center gap-3 overflow-hidden">
+                <i data-lucide="file-text" class="w-8 h-8 text-brand-500 shrink-0"></i>
+                <div class="truncate">
+                  <p id="file-name" class="font-medium text-slate-800 text-sm truncate">file_nama.pdf</p>
+                  <p id="file-size" class="text-xs text-slate-400">0 MB</p>
+                </div>
+              </div>
+              <button type="button" id="remove-file" class="text-slate-400 hover:text-red-500 p-2 rounded-lg hover:bg-red-50 transition-colors z-30 cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5 pointer-events-none"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Step 2: Spesifikasi Print -->
+        <div>
+          <label class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center text-xs">2</span>
+            Spesifikasi Cetak
+          </label>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- Jenis Kertas -->
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Jenis Kertas</label>
+              <select id="paper-type" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                <option value="500">HVS A4 75gr (Rp 500/lembar)</option>
+                <option value="600">HVS F4/Maks 75gr (Rp 600/lembar)</option>
+                <option value="800">HVS A4 80gr (Rp 800/lembar)</option>
+                <option value="2500">Art Paper 150gr (Rp 2.500/lembar)</option>
+              </select>
+            </div>
+
+            <!-- Mode Warna -->
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Mode Warna</label>
+              <select id="print-color" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                <option value="0">Hitam Putih (B/W)</option>
+                <option value="500">Warna Sedikit / Teks (+Rp 500)</option>
+                <option value="1500">Warna Full / Gambar (+Rp 1.500)</option>
+              </select>
+            </div>
+
+            <!-- Sisi Cetak -->
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Sisi Cetak</label>
+              <select id="print-sides" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                <option value="1">1 Sisi (Simplex)</option>
+                <option value="2">2 Sisi (Duplex / Bolak-balik)</option>
+              </select>
+            </div>
+
+            <!-- Jilid -->
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Opsi Jilid</label>
+              <select id="binding-type" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                <option value="0">Tanpa Jilid</option>
+                <option value="5000">Jilid Lakban + Mika (Rp 5.000)</option>
+                <option value="10000">Jilid Spiral Plastik (Rp 10.000)</option>
+                <option value="25000">Jilid Skripsi / Hardcover (Rp 25.000)</option>
+              </select>
+            </div>
+
+            <!-- Jumlah Halaman -->
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Jumlah Halaman Document</label>
+              <input type="number" id="page-count" value="1" min="1" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+            </div>
+
+            <!-- Jumlah Rangkap/Copy -->
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Jumlah Rangkap (Copy)</label>
+              <input type="number" id="copy-count" value="1" min="1" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Step 3: Pengiriman & Catatan -->
+        <div>
+          <label class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center text-xs">3</span>
+            Pengiriman & Catatan
+          </label>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Opsi Pengambilan / Kurir Tanjungpinang</label>
+              <select id="delivery-option" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                <option value="0">Ambil Sendiri di Toko (Gratis)</option>
+                <option value="3000">COD Kampus UMRAH Senggarang / Dompak (Rp 3.000)</option>
+                <option value="3000">COD Kampus STIE / Poltekkes (Rp 3.000)</option>
+                <option value="5000">Kurir Instant Area Km. 1 - Km. 8 (Rp 5.000)</option>
+                <option value="8000">Kurir Instant Area Km. 9 - Km. 15 (Rp 8.000)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1">Catatan Tambahan (Opsional)</label>
+              <textarea id="notes" placeholder="Contoh: Print halaman 1-10 saja, atau Mika warna biru..." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none h-20 resize-none"></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Rincian Biaya & Order (Kanan) -->
+    <div class="lg:col-span-5 space-y-6">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 sticky top-24">
+        <h2 class="text-lg font-bold text-slate-900 mb-4 pb-3 border-b border-slate-100 flex items-center justify-between">
+          <span>Rincian Estimasi Biaya</span>
+          <i data-lucide="calculator" class="w-5 h-5 text-brand-500"></i>
+        </h2>
+
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between text-slate-600">
+            <span>Biaya Cetak per Lembar:</span>
+            <span id="price-per-sheet" class="font-semibold text-slate-800">Rp 500</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Total Lembar Kertas:</span>
+            <span id="total-sheets" class="font-semibold text-slate-800">1 Lembar</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Subtotal Cetak:</span>
+            <span id="subtotal-print" class="font-semibold text-slate-800">Rp 500</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Biaya Jilid:</span>
+            <span id="binding-cost" class="font-semibold text-slate-800">Rp 0</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Ongkos Kirim:</span>
+            <span id="delivery-cost" class="font-semibold text-slate-800">Rp 0</span>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex justify-between items-end">
+            <div>
+              <span class="text-xs text-slate-400 block font-medium">ESTIMASI TOTAL</span>
+              <span id="grand-total" class="text-2xl font-extrabold text-brand-600">Rp 500</span>
+            </div>
+            <span class="text-xs text-slate-400">Termasuk Pajak</span>
+          </div>
+        </div>
+
+        <button type="button" id="btn-whatsapp" class="w-full mt-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          <span>Kirim Pesanan ke WhatsApp</span>
+        </button>
+
+        <p class="text-xs text-center text-slate-400 mt-3">
+          Sistem akan mengarahkan kamu langsung ke WhatsApp admin PrintYuk Tanjungpinang.
+        </p>
+
+        <!-- Informasi Kontak & Lokasi -->
+        <div class="mt-6 pt-6 border-t border-slate-100 space-y-3 text-xs text-slate-500">
+          <div class="flex items-start gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-500 shrink-0 mt-0.5"></i>
+            <span>Tanjungpinang, Kepulauan Riau</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="clock" class="w-4 h-4 text-brand-500 shrink-0"></i>
+            <span>Buka: Isnin - Sabtu (08.00 - 21.00 WIB)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Keunggulan Section -->
+  <section id="keunggulan" class="py-12 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h2 class="text-2xl font-bold text-slate-900">Kenapa Harus PrintYuk Tanjungpinang?</h2>
+        <p class="text-slate-500 text-sm mt-1">Layanan print online terbaik yang disesuaikan dengan kebutuhan lokal</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 space-y-2 shadow-sm">
+          <i data-lucide="zap" class="w-8 h-8 text-brand-600"></i>
+          <h3 class="font-bold text-slate-800">Cepat & Tanpa Antre</h3>
+          <p class="text-xs text-slate-500">Tinggal kirim file dari rumah/kos, berkas langsung diproses tanpa buang waktu menunggu.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 space-y-2 shadow-sm">
+          <i data-lucide="map-pin" class="w-8 h-8 text-brand-600"></i>
+          <h3 class="font-bold text-slate-800">Bisa Antar ke Kampus</h3>
+          <p class="text-xs text-slate-500">Bisa antar langsung saat jam kuliah ke UMRAH Senggarang/Dompak, STIE, maupun Poltekkes.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 space-y-2 shadow-sm">
+          <i data-lucide="shield-check" class="w-8 h-8 text-brand-600"></i>
+          <h3 class="font-bold text-slate-800">Kualitas Rapi & Terjamin</h3>
+          <p class="text-xs text-slate-500">Menggunakan tinta original dan kertas berkualitas tinggi agar hasil tugas/dokumen tampak profesional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOMBOL MELAYANG WHATSAPP (FLOATING ACTION BUTTON) -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button type="button" onclick="sendConsultation('Konsultasi Umum')" class="bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 md:px-4 md:py-3 rounded-full shadow-2xl flex items-center gap-2 transition-all hover:scale-105 active:scale-95 border-2 border-white">
+      <i data-lucide="message-circle" class="w-6 h-6"></i>
+      <span class="hidden md:inline font-bold text-sm">Konsultasi WA</span>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 mt-auto text-center text-sm border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 space-y-3">
+      <p class="font-semibold text-slate-200">PrintYuk! Tanjungpinang</p>
+      <p class="text-xs text-slate-500 max-w-md mx-auto">Solusi cetak dokumen online cepat & praktis untuk Mahasiswa dan Pekerja Kantoran di Tanjungpinang, Kepulauan Riau.</p>
+      <p class="text-xs text-slate-600 pt-3 border-t border-slate-800">&copy; 2026 PrintYuk Tanjungpinang. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Script Logika Kalkulator, Hapus File, & WhatsApp -->
+  <script>
+    lucide.createIcons();
+
+    // Nomor WA Admin (Sesuaikan jika perlu)
+    const TARGET_PHONE = '6285658323189'; 
+
+    const paperTypeEl = document.getElementById('paper-type');
+    const printColorEl = document.getElementById('print-color');
+    const printSidesEl = document.getElementById('print-sides');
+    const bindingTypeEl = document.getElementById('binding-type');
+    const pageCountEl = document.getElementById('page-count');
+    const copyCountEl = document.getElementById('copy-count');
+    const deliveryOptionEl = document.getElementById('delivery-option');
+    const notesEl = document.getElementById('notes');
+
+    const pricePerSheetEl = document.getElementById('price-per-sheet');
+    const totalSheetsEl = document.getElementById('total-sheets');
+    const subtotalPrintEl = document.getElementById('subtotal-print');
+    const bindingCostEl = document.getElementById('binding-cost');
+    const deliveryCostEl = document.getElementById('delivery-cost');
+    const grandTotalEl = document.getElementById('grand-total');
+
+    const fileInput = document.getElementById('file-input');
+    const uploadPlaceholder = document.getElementById('upload-placeholder');
+    const fileInfo = document.getElementById('file-info');
+    const fileNameEl = document.getElementById('file-name');
+    const fileSizeEl = document.getElementById('file-size');
+    const removeFileBtn = document.getElementById('remove-file');
+    const btnWhatsapp = document.getElementById('btn-whatsapp');
+    const btnWaConsultNav = document.getElementById('btn-wa-consult-nav');
+
+    let currentFile = null;
+
+    function formatRupiah(amount) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(amount);
+    }
+
+    function calculateTotal() {
+      const basePaperPrice = parseInt(paperTypeEl.value);
+      const colorExtra = parseInt(printColorEl.value);
+      const sides = parseInt(printSidesEl.value);
+      const bindingCost = parseInt(bindingTypeEl.value);
+      const deliveryCost = parseInt(deliveryOptionEl.value);
+      const pageCount = Math.max(1, parseInt(pageCountEl.value) || 1);
+      const copyCount = Math.max(1, parseInt(copyCountEl.value) || 1);
+
+      let sheetsPerPage = (sides === 2) ? Math.ceil(pageCount / 2) : pageCount;
+      let totalSheets = sheetsPerPage * copyCount;
+
+      let pricePerSheet = basePaperPrice + colorExtra;
+
+      let subtotalPrint = pricePerSheet * totalSheets;
+      let totalBinding = bindingCost * copyCount;
+      let grandTotal = subtotalPrint + totalBinding + deliveryCost;
+
+      pricePerSheetEl.textContent = formatRupiah(pricePerSheet);
+      totalSheetsEl.textContent = `${totalSheets} Lembar`;
+      subtotalPrintEl.textContent = formatRupiah(subtotalPrint);
+      bindingCostEl.textContent = formatRupiah(totalBinding);
+      deliveryCostEl.textContent = formatRupiah(deliveryCost);
+      grandTotalEl.textContent = formatRupiah(grandTotal);
+
+      return {
+        pricePerSheet,
+        totalSheets,
+        subtotalPrint,
+        totalBinding,
+        deliveryCost,
+        grandTotal,
+        pageCount,
+        copyCount
+      };
+    }
+
+    [paperTypeEl, printColorEl, printSidesEl, bindingTypeEl, pageCountEl, copyCountEl, deliveryOptionEl].forEach(element => {
+      element.addEventListener('change', calculateTotal);
+      element.addEventListener('input', calculateTotal);
+    });
+
+    // Pilihan File
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files.length > 0) {
+        currentFile = e.target.files[0];
+        fileNameEl.textContent = currentFile.name;
+        fileSizeEl.textContent = (currentFile.size / (1024 * 1024)).toFixed(2) + ' MB';
+        
+        uploadPlaceholder.classList.add('hidden');
+        fileInfo.classList.remove('hidden');
+      }
+    });
+
+    // Hapus/Cancel File (DIPERBAIKI)
+    removeFileBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      fileInput.value = '';
+      currentFile = null;
+      
+      fileInfo.classList.add('hidden');
+      uploadPlaceholder.classList.remove('hidden');
+    });
+
+    // Fungsi Kirim Konsultasi
+    function sendConsultation(topic) {
+      let msg = `*HALO PRINTYUK TANJUNGPINANG!* 👋\n\n`;
+      msg += `Saya mau konsultasi / tanya-tanya mengenai layanan percetakan.\n`;
+      msg += `📌 *Topik Pertanyaan:* ${topic}\n\n`;
+      msg += `Mohon dibantu informasinya ya min. Terima kasih!`;
+      
+      const encodedMsg = encodeURIComponent(msg);
+      window.open(`https://wa.me/${TARGET_PHONE}?text=${encodedMsg}`, '_blank');
+    }
+
+    btnWaConsultNav.addEventListener('click', () => {
+      sendConsultation('Pertanyaan Umum Sebelum Order');
+    });
+
+    // Send Pesanan via WA
+    btnWhatsapp.addEventListener('click', () => {
+      const calc = calculateTotal();
+      const paperText = paperTypeEl.options[paperTypeEl.selectedIndex].text;
+      const colorText = printColorEl.options[printColorEl.selectedIndex].text;
+      const sidesText = printSidesEl.options[printSidesEl.selectedIndex].text;
+      const bindingText = bindingTypeEl.options[bindingTypeEl.selectedIndex].text;
+      const deliveryText = deliveryOptionEl.options[deliveryOptionEl.selectedIndex].text;
+      const notesText = notesEl.value.trim() || '-';
+      const fileName = currentFile ? currentFile.name : '(File belum diupload/dikirim manual)';
+
+      let message = `*HALO PRINTYUK TANJUNGPINANG!* 🖨️\n`;
+      message += `Saya mau pesan jasa cetak dokumen dengan rincian berikut:\n\n`;
+      message += `📄 *Nama File:* ${fileName}\n`;
+      message += `📑 *Jenis Kertas:* ${paperText}\n`;
+      message += `🎨 *Mode Warna:* ${colorText}\n`;
+      message += `🔄 *Sisi Cetak:* ${sidesText}\n`;
+      message += `📕 *Jilid:* ${bindingText}\n`;
+      message += `📊 *Jumlah:* ${calc.pageCount} Halaman x ${calc.copyCount} Rangkap (${calc.totalSheets} Lembar Kertas)\n`;
+      message += `🛵 *Pengiriman:* ${deliveryText}\n`;
+      message += `📝 *Catatan:* ${notesText}\n\n`;
+      message += `💰 *TOTAL ESTIMASI:* ${formatRupiah(calc.grandTotal)}\n\n`;
+      message += `Mohon konfirmasi dan info nomor rekening / QRIS untuk pembayarannya. Terima kasih!`;
+
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${TARGET_PHONE}?text=${encodedMessage}`, '_blank');
+    });
+
+    calculateTotal();
+  </script>
+</body>
+</html>
