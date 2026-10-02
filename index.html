@@ -10,6 +10,12 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- 1. PDF.JS LIBRARY (Untuk Otomatis Hitung Jumlah Halaman PDF) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+  </script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -116,7 +122,7 @@
             </div>
             <div>
               <p class="text-slate-400">Jam Operasi</p>
-              <p class="font-bold text-white mt-0.5">senin – Sabtu (08:00 – 21:00 WIB)</p>
+              <p class="font-bold text-white mt-0.5">Senin – Sabtu (08:00 – 21:00 WIB)</p>
             </div>
             <div>
               <p class="text-slate-400">Layanan</p>
@@ -177,7 +183,6 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
         <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex items-center gap-2 text-brand-600 font-bold">
             <i data-lucide="file-text" class="w-5 h-5"></i>
@@ -190,7 +195,6 @@
           </ul>
         </div>
 
-        <!-- Card 2 -->
         <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex items-center gap-2 text-brand-600 font-bold">
             <i data-lucide="book-open" class="w-5 h-5"></i>
@@ -203,7 +207,6 @@
           </ul>
         </div>
 
-        <!-- Card 3 -->
         <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex items-center gap-2 text-brand-600 font-bold">
             <i data-lucide="truck" class="w-5 h-5"></i>
@@ -219,7 +222,7 @@
     </div>
   </section>
 
-  <!-- FITUR BARU: SEKSI KONSULTASI & TANYA JAWAB VIA WA -->
+  <!-- SEKSI KONSULTASI -->
   <section id="konsultasi" class="py-12 bg-emerald-50/60 border-b border-emerald-100">
     <div class="max-w-6xl mx-auto px-4">
       <div class="bg-white rounded-3xl p-6 md:p-8 border border-emerald-200 shadow-md">
@@ -277,7 +280,7 @@
 
       <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-6">
         
-        <!-- Step 1: Upload File (DIPERBAIKI) -->
+        <!-- Step 1: Upload File -->
         <div>
           <label class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 mb-3">
             <span class="w-6 h-6 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center text-xs">1</span>
@@ -360,7 +363,7 @@
               </select>
             </div>
 
-            <!-- Jumlah Halaman -->
+            <!-- Jumlah Halaman (Otomatis terisi jika PDF diupload) -->
             <div>
               <label class="block text-xs font-medium text-slate-600 mb-1">Jumlah Halaman Document</label>
               <input type="number" id="page-count" value="1" min="1" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
@@ -458,7 +461,7 @@
           </div>
           <div class="flex items-center gap-2">
             <i data-lucide="clock" class="w-4 h-4 text-brand-500 shrink-0"></i>
-            <span>Buka: senin - Sabtu (08.00 - 21.00 WIB)</span>
+            <span>Buka: Senin - Sabtu (08.00 - 21.00 WIB)</span>
           </div>
         </div>
 
@@ -497,7 +500,7 @@
     </div>
   </section>
 
-  <!-- TOMBOL MELAYANG WHATSAPP (FLOATING ACTION BUTTON) -->
+  <!-- TOMBOL MELAYANG WHATSAPP -->
   <div class="fixed bottom-6 right-6 z-50">
     <button type="button" onclick="sendConsultation('Konsultasi Umum')" class="bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 md:px-4 md:py-3 rounded-full shadow-2xl flex items-center gap-2 transition-all hover:scale-105 active:scale-95 border-2 border-white">
       <i data-lucide="message-circle" class="w-6 h-6"></i>
@@ -514,11 +517,11 @@
     </div>
   </footer>
 
-  <!-- Script Logika Kalkulator, Hapus File, & WhatsApp -->
+  <!-- SCRIPT LOGIKA KALKULATOR, WHATSAPP, & DETEKSI OTOMATIS HALAMAN PDF -->
   <script>
     lucide.createIcons();
 
-    // Nomor WA Admin (Sesuaikan jika perlu)
+    // Nomor WA Admin PrintYuk Tanjungpinang
     const TARGET_PHONE = '6285658323189'; 
 
     const paperTypeEl = document.getElementById('paper-type');
@@ -552,12 +555,13 @@
       return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(amount);
     }
 
+    // Fungsi Utama Kalkulator
     function calculateTotal() {
-      const basePaperPrice = parseInt(paperTypeEl.value);
-      const colorExtra = parseInt(printColorEl.value);
-      const sides = parseInt(printSidesEl.value);
-      const bindingCost = parseInt(bindingTypeEl.value);
-      const deliveryCost = parseInt(deliveryOptionEl.value);
+      const basePaperPrice = parseInt(paperTypeEl.value) || 0;
+      const colorExtra = parseInt(printColorEl.value) || 0;
+      const sides = parseInt(printSidesEl.value) || 1;
+      const bindingCost = parseInt(bindingTypeEl.value) || 0;
+      const deliveryCost = parseInt(deliveryOptionEl.value) || 0;
       const pageCount = Math.max(1, parseInt(pageCountEl.value) || 1);
       const copyCount = Math.max(1, parseInt(copyCountEl.value) || 1);
 
@@ -576,91 +580,94 @@
       bindingCostEl.textContent = formatRupiah(totalBinding);
       deliveryCostEl.textContent = formatRupiah(deliveryCost);
       grandTotalEl.textContent = formatRupiah(grandTotal);
-
-      return {
-        pricePerSheet,
-        totalSheets,
-        subtotalPrint,
-        totalBinding,
-        deliveryCost,
-        grandTotal,
-        pageCount,
-        copyCount
-      };
     }
 
+    // Event Listener untuk Kalkulator
     [paperTypeEl, printColorEl, printSidesEl, bindingTypeEl, pageCountEl, copyCountEl, deliveryOptionEl].forEach(element => {
-      element.addEventListener('change', calculateTotal);
       element.addEventListener('input', calculateTotal);
+      element.addEventListener('change', calculateTotal);
     });
 
-    // Pilihan File
-    fileInput.addEventListener('change', (e) => {
-      if (e.target.files && e.target.files.length > 0) {
-        currentFile = e.target.files[0];
-        fileNameEl.textContent = currentFile.name;
-        fileSizeEl.textContent = (currentFile.size / (1024 * 1024)).toFixed(2) + ' MB';
+    // Fitur Upload File & Deteksi Jumlah Halaman PDF Otomatis
+    fileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        currentFile = file;
+        fileNameEl.textContent = file.name;
+        fileSizeEl.textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
         
         uploadPlaceholder.classList.add('hidden');
         fileInfo.classList.remove('hidden');
+
+        // Pustaka PDF.js Deteksi Otomatis Jumlah Halaman
+        if (file.type === "application/pdf") {
+          const fileReader = new FileReader();
+          fileReader.onload = function() {
+            const typedarray = new Uint8Array(this.result);
+            pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
+              pageCountEl.value = pdf.numPages;
+              calculateTotal(); // Hitung ulang total biaya
+            });
+          };
+          fileReader.readAsArrayBuffer(file);
+        } else {
+          // Jika gambar/word set default 1 halaman
+          pageCountEl.value = 1;
+          calculateTotal();
+        }
       }
     });
 
-    // Hapus/Cancel File (DIPERBAIKI)
-    removeFileBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      fileInput.value = '';
+    // Fitur Hapus File
+    removeFileBtn.addEventListener('click', function() {
       currentFile = null;
-      
-      fileInfo.classList.add('hidden');
+      fileInput.value = '';
       uploadPlaceholder.classList.remove('hidden');
+      fileInfo.classList.add('hidden');
+      pageCountEl.value = 1;
+      calculateTotal();
     });
 
-    // Fungsi Kirim Konsultasi
-    function sendConsultation(topic) {
-      let msg = `*HALO PRINTYUK TANJUNGPINANG!* 👋\n\n`;
-      msg += `Saya mau konsultasi / tanya-tanya mengenai layanan percetakan.\n`;
-      msg += `📌 *Topik Pertanyaan:* ${topic}\n\n`;
-      msg += `Mohon dibantu informasinya ya min. Terima kasih!`;
-      
-      const encodedMsg = encodeURIComponent(msg);
-      window.open(`https://wa.me/${TARGET_PHONE}?text=${encodedMsg}`, '_blank');
-    }
-
-    btnWaConsultNav.addEventListener('click', () => {
-      sendConsultation('Pertanyaan Umum Sebelum Order');
-    });
-
-    // Send Pesanan via WA
-    btnWhatsapp.addEventListener('click', () => {
-      const calc = calculateTotal();
+    // Fitur Kirim Pesanan ke WhatsApp
+    btnWhatsapp.addEventListener('click', function() {
       const paperText = paperTypeEl.options[paperTypeEl.selectedIndex].text;
       const colorText = printColorEl.options[printColorEl.selectedIndex].text;
       const sidesText = printSidesEl.options[printSidesEl.selectedIndex].text;
       const bindingText = bindingTypeEl.options[bindingTypeEl.selectedIndex].text;
       const deliveryText = deliveryOptionEl.options[deliveryOptionEl.selectedIndex].text;
-      const notesText = notesEl.value.trim() || '-';
-      const fileName = currentFile ? currentFile.name : '(File belum diupload/dikirim manual)';
+      
+      const fileName = currentFile ? currentFile.name : 'Belum diunggah (kirim manual via chat)';
+      const pages = pageCountEl.value;
+      const copies = copyCountEl.value;
+      const userNotes = notesEl.value.trim() || '-';
+      const total = grandTotalEl.textContent;
 
-      let message = `*HALO PRINTYUK TANJUNGPINANG!* 🖨️\n`;
-      message += `Saya mau pesan jasa cetak dokumen dengan rincian berikut:\n\n`;
-      message += `📄 *Nama File:* ${fileName}\n`;
-      message += `📑 *Jenis Kertas:* ${paperText}\n`;
-      message += `🎨 *Mode Warna:* ${colorText}\n`;
-      message += `🔄 *Sisi Cetak:* ${sidesText}\n`;
-      message += `📕 *Jilid:* ${bindingText}\n`;
-      message += `📊 *Jumlah:* ${calc.pageCount} Halaman x ${calc.copyCount} Rangkap (${calc.totalSheets} Lembar Kertas)\n`;
-      message += `🛵 *Pengiriman:* ${deliveryText}\n`;
-      message += `📝 *Catatan:* ${notesText}\n\n`;
-      message += `💰 *TOTAL ESTIMASI:* ${formatRupiah(calc.grandTotal)}\n\n`;
-      message += `Mohon konfirmasi dan info nomor rekening / QRIS untuk pembayarannya. Terima kasih!`;
+      let message = `*HALO PRINTYUK TANJUNGPINANG!* 🖨️\nSaya ingin memesan cetak dokumen dengan rincian berikut:\n\n` +
+                    `📄 *Nama File:* ${fileName}\n` +
+                    `📃 *Jenis Kertas:* ${paperText}\n` +
+                    `🎨 *Warna:* ${colorText}\n` +
+                    `🔄 *Sisi Cetak:* ${sidesText}\n` +
+                    `📚 *Jilid:* ${bindingText}\n` +
+                    `📊 *Halaman:* ${pages} hal | *Rangkap:* ${copies} copy\n` +
+                    `🚚 *Pengiriman:* ${deliveryText}\n` +
+                    `📝 *Catatan:* ${userNotes}\n\n` +
+                    `💰 *ESTIMASI TOTAL:* ${total}\n\n` +
+                    `Mohon diproses, terima kasih!`;
 
-      const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/${TARGET_PHONE}?text=${encodedMessage}`, '_blank');
+      window.open(`https://wa.me/${TARGET_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
     });
 
+    // Fungsi Konsultasi via WhatsApp
+    function sendConsultation(topic) {
+      let msg = `Halo Admin PrintYuk Tanjungpinang, saya mau konsultasi tentang: *${topic}*`;
+      window.open(`https://wa.me/${TARGET_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    btnWaConsultNav.addEventListener('click', function() {
+      sendConsultation('Tanya-tanya Layanan');
+    });
+
+    // Jalankan Kalkulator saat Halaman Pertama Kali Dibat
     calculateTotal();
   </script>
 </body>
